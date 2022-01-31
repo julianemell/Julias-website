@@ -1,7 +1,9 @@
-body {
+* {
     margin: 0;
+    padding: 0;
     font-family: 'Ubuntu Mono', monospace;
     font-weight: 400;
+    box-sizing: border-box;
 }
 
 .container {
@@ -27,36 +29,57 @@ a {
 
 /* header */
 
-header {
-    background-color: #ffc400;
-    
+li {
+    list-style: none;
 }
 
-header a {
+.nav-link {
     color: white;
     font-size: 1.2rem;
+    transition: 0.3s ease;
 }
 
-.logo {
-    width: 15%;
+.nav-link:hover {
+    color: black;
 }
 
-.logo img {
-    width: 100%;
-}
-
-.header {
+.navbar {
+    background-color: #ffc400;
+    min-height: 70px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
-nav {
+.nav-menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     width: 50%;
 }
+
+.nav-branding {
+    width: 15%;
+    color: white;
+    font-size: 2rem;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: white;
+}
+
 
 /* main */
 
@@ -68,11 +91,16 @@ nav {
 }
 
 .illustration {
-    width: 30%;
+    width: 20%;
     height: auto;
     background-color: #ffc400;
     border-radius: 50%;
     padding: 2%;
+}
+
+.illustration img {
+    width: 100%;
+    height: auto;
 }
 
 
@@ -176,4 +204,43 @@ nav {
 
 .contact-text {
     width: 45%;
+}
+
+
+@media(max-width:768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2){
+        opacity: 0;
+    }
+    
+    .hamburger.active .bar:nth-child(1){
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3){
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        gap: 0;
+        flex-direction: column;
+        background-color: #ffc400;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+    }
+
+    .nav-item {
+        margin: 16px 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
 }
